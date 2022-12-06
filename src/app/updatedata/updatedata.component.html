@@ -1,0 +1,81 @@
+<p>updatedata works!</p>
+
+<!-- Update User data -->
+<form
+  class="delete-data-form"
+  #sendUpdateUser="ngForm"
+  (ngSubmit)="updateUserData(sendUpdateUser.value)"
+>
+  <fieldset>
+    <legend><h3>Update Data</h3></legend>
+    <input
+      type="text"
+      #userUpdatedName="ngModel"
+      ngModel
+      name="userName"
+      placeholder="updated name"
+      [value]="updateUser.userName"
+      required
+      minlength="5"
+      maxlength="10"
+      pattern="^[a-zA-Z]+$"
+    />
+    {{ updateUser.userName }} <!-- apply validation here-->
+    {{ userUpdatedName.value }} <!-- dont apply validation here -->
+    <small
+      *ngIf="
+        !userUpdatedName.value &&
+        (userUpdatedName.dirty || userUpdatedName.touched)
+      "
+      style="color: red"
+      >invalid username</small
+    >
+    <br /><br />
+    <input
+      type="email"
+      #userUpdatedEmail="ngModel"
+      ngModel
+      name="userEmail"
+      placeholder="updated email"
+      [value]="updateUser.userEmail"
+      required
+      email
+    />
+    <small
+      *ngIf="
+        !userUpdatedEmail.valid &&
+        (userUpdatedEmail.dirty || userUpdatedEmail.touched)
+      "
+      style="color: red"
+      >invalid email</small
+    >
+    <br /><br />
+    <input
+      type="password"
+      #userUpdatedPass="ngModel"
+      ngModel
+      name="userPass"
+      placeholder="updated password"
+      [value]="updateUser.userPass"
+      required
+      minlength="8"
+      maxlength="12"
+      pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"
+    />
+    <small
+      *ngIf="
+        !userUpdatedPass.valid &&
+        (userUpdatedPass.dirty || userUpdatedPass.touched)
+      "
+      style="color: red"
+      >At least 1 Uppercase, 1 Lowercase, 1 Number, 1 Symbol, Min 8 chars and
+      Max 12 chars</small
+    >
+    <br /><br />
+    <button type="submit" >update data</button>
+  </fieldset>
+</form>
+
+<!--
+
+ -->

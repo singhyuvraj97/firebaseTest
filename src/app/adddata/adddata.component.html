@@ -1,0 +1,64 @@
+<h1>adddata works!</h1>
+
+<!-- Add user data-->
+<form
+  class="add-data-form"
+  #userdata="ngForm"
+  (ngSubmit)="sendUserDataToDb(userdata.value)"
+  novalidate
+>
+  <fieldset>
+    <legend><h3>Add Data</h3></legend>
+    <input
+      type="text"
+      #userName="ngModel"
+      ngModel
+      name="userName"
+      placeholder="enter your name"
+      required
+      minlength="5"
+      maxlength="10"
+      pattern="^[a-zA-Z]+$"
+    />
+    <small
+      *ngIf="!userName.valid && (userName.dirty || userName.touched)"
+      style="color: red"
+      >invalid username</small
+    >
+    <br /><br />
+    <input
+      type="email"
+      #userEmail="ngModel"
+      ngModel
+      name="userEmail"
+      placeholder="enter your email"
+      required
+      email
+    />
+    <small
+      *ngIf="!userEmail.valid && (userEmail.dirty || userEmail.touched)"
+      style="color: red"
+      >invalid email</small
+    >
+    <br /><br />
+    <input
+      type="password"
+      #userPass="ngModel"
+      ngModel
+      name="userPass"
+      placeholder="enter your password"
+      required
+      minlength="8"
+      maxlength="12"
+      pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"
+    />
+    <small
+      *ngIf="!userPass.valid && (userPass.dirty || userPass.touched)"
+      style="color: red"
+      >At least 1 Uppercase, 1 Lowercase, 1 Number, 1 Symbol, Min 8 chars and
+      Max 12 chars</small
+    >
+    <br /><br />
+    <button type="submit" [disabled]="!userdata.valid">Create data</button>
+  </fieldset>
+</form>

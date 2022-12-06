@@ -1,0 +1,26 @@
+.add-data-form, .delete-data-form{
+  width: 300px;
+  height: max-content;
+  background-color: black;
+  color: aliceblue;
+  float: right;
+}
+
+.form-disp-table{
+  display: inline-block;
+  border: 2px solid crimson;
+  border-collapse: collapse;
+}
+
+.form-disp-table tbody td{
+  padding: 10px 20px;
+}
+
+.form-disp-table tbody tr:nth-child(odd){
+  background-color: lightgrey;
+}
+
+.delete-data-form input[type="password"]{
+  background-color: aqua;
+  appearance: textarea;
+}
